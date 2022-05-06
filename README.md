@@ -15,26 +15,63 @@ The Swedish gastrointestinal discharge summaries used to fine-tune the SweDeClin
 
 ## Documentation of masters_thesis.py
 ### To rerun the experiment
-To rerun the experiment, the following information is important:
-Observe that the data used for the experiment needs to be in a csv-file.
-The first row should describe the column-names in the following way:
-patientnr,anteckning,<columns for all ICD-codes>.
-The column patientnr, should contain the patient-number in the data.
-The column anteckning, should contain the discharge summary text.
-The remaining columns should contain a value of 0 or 1 to denote false or true value for each label (ICD-10 code).
 
-Call the following functions in the following order from the main function:
+Observe that the data used for the experiment needs to be in a csv-file. The first row should describe the column-names in the following way: patientnr,anteckning,<columns for all ICD-codes>. The column patientnr, should contain the patient-number in the data. The column anteckning, should contain the discharge summary text. The remaining columns should contain a value of 0 or 1 to denote false or true value for each label (ICD-10 code).
+
+Call the following functions in this order from the main function. You ought run one function at a time:
+  
 visualise_ICD_code_distribution
+
 create_subset_of_discharge_summaries
+
 create_training_validation_and_test_sets
+
 cross_validation
+
 fine_tune_model
+
 test_model
+
 get_prediction_for_single_discharge_summary
 
 
 ### Comments to functions and classes
-#### Class
+#### class GastroDataset
+  text
+#### class BertForMultilabelSequenceClassification
+  text
+#### get_dictionary_from_df
+  text
+#### display_dictionary
+  text
+#### visualise_ICD_code_distribution
+  The full data is read into the variable *data*. 
+The variable *full_name* contains all the column-names for all the ICD-codes.
+When creating variable *dict_with_values_over_hundred*, only the ICD-codes with samples over 100 are visualized. 
+#### create_subset_of_discharge_summaries
+  The full data is read into the variable *data*.
+When creating the variable *d*, only the ICD-codes that have been visualized using function visualise_ICD_code_distribution are chosen. 
+From *data*, only the selected ICD-code columns are picked out along with columns patientnr and anteckning. The selected data is then saved. 
+#### create_training_validation_and_test_sets
+  The function is used to create training, validation and test sets using the selected data that has been saved from running function create_subset_of_discharge_summaries.
+#### cross_validation
+The data without test data from the function create_training_validation_and_test_sets is loaded. 
+The tokenizer from the not fine-tuned SweDeClin-BERT model is loaded. 
+The not fine-tuned SweDeClin-BERT model is loaded. 
+Five-fold cross validation is performed using the not fine-tuned SweDeClin-BERT model, with the hyperparameters that will be used for fine-tuning, except for the number of epochs. The number of epochs used for the cross validation is 10. 
+The resulting metrics are printed and depending on the metrics, the number of epochs to use for the fine-tuning is decided. 
+#### fine_tune_model
+  The training data and validation data are loaded.
+The tokenizer from the not fine-tuned SweDeClin-BERT model is loaded. 
+The not fine-tuned SweDeClin-BERT model is loaded. 
+Fine tuning is performed. Hyperparameters are based on previous studies. The number of epochs is decided based on the result of the five-fold cross validation.
+The tokenizer and the model is saved.
+
+
+
+
+
+
 
 ### Python version and packages used
 Python version 3.7.0 has been used for this project and the following packages has been present in the virtual environment used to run the code in masters_thesis.py:
