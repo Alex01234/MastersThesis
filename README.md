@@ -37,9 +37,9 @@ get_prediction_for_single_discharge_summary
 
 ### Comments to functions and classes
 #### class GastroDataset
-  text
+  The class has been reused from [x4nth055](https://github.com/x4nth055/pythoncode-tutorials/blob/master/machine-learning/nlp/bert-text-classification/train.py) and is used to create the training, validation and test sets.
 #### class BertForMultilabelSequenceClassification
-  text
+  The class has been reused from [Tunstall](https://colab.research.google.com/drive/1X7l8pM6t4VLqxQVJ23ssIxmrsc4Kpc5q#scrollTo=4mO5wge2mEs2) and is used to create a custom BERT model able to perform multi-label classification. 
 #### visualise_ICD_code_distribution
   The full data is read into the variable *data*. 
 The variable *full_name* contains all the column-names for all the ICD-codes.
