@@ -40,10 +40,6 @@ get_prediction_for_single_discharge_summary
   text
 #### class BertForMultilabelSequenceClassification
   text
-#### get_dictionary_from_df
-  text
-#### display_dictionary
-  text
 #### visualise_ICD_code_distribution
   The full data is read into the variable *data*. 
 The variable *full_name* contains all the column-names for all the ICD-codes.
@@ -66,6 +62,14 @@ The tokenizer from the not fine-tuned SweDeClin-BERT model is loaded.
 The not fine-tuned SweDeClin-BERT model is loaded. 
 Fine tuning is performed. Hyperparameters are based on previous studies. The number of epochs is decided based on the result of the five-fold cross validation.
 The tokenizer and the model is saved.
+#### test_model
+  The tokenizer and the model from the fine-tuning is loaded.
+The test data is loaded. 
+The model is tested on the test data, where the metrics accuracy, precision, recall and F1-score is calculated. The macro averaged, micro averaged and weighted averaged variants of the metrics are calculated. In the helper-function calc_threhold, the threshold of 0.5 is set. This means that if the model returns a prediction probability of 0.5 or higher, it is judged that the model deems that label to be 1/true. 
+#### get_prediction_for_single_discharge_summary
+The tokenizer and the model from the fine-tuning is loaded.
+The discharge that is to be predicted is passed as a parameter to the function. 
+The prediction probabilities for each label is printed. 
 
 
 
