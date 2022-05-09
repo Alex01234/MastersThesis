@@ -14,7 +14,7 @@ In our master's thesis, the explanations by [LIME](https://github.com/marcotcr/l
 The Swedish gastrointestinal discharge summaries used to fine-tune the SweDeClin-BERT model, and from which discharge summaries has been taken to be evaluated by medical experts, comes from the Stockholm Electroinc Patient Record (EPR) Gastro ICD-10 Corpus (ICD-10 Corpus). The ICD-10 Corpus is a part of EPRs found in the [HEALTH BANK](https://dsv.su.se/en/research/research-areas/health/stockholm-epr-corpus-1.146496). For questions about the HEALTH BANK, please contact Professor [Hercules Dalianis](https://people.dsv.su.se/~hercules/). 
 
 ## Documentation of masters_thesis.py
-### To rerun the experiment
+### How to rerun the experiment
 
 Observe that the data used for the experiment needs to be in a csv-file. The first row should describe the column-names in the following way: patientnr,anteckning,<columns for all ICD-codes>. The column patientnr, should contain the patient-number in the data. The column anteckning, should contain the discharge summary text. The remaining columns should contain a value of 0 or 1 to denote false or true value for each label (ICD-10 code).
 
